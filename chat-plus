@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat+ Wiki | PlamiumAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand: #5599ff;
+            --accent: #ffaa00;
+            --success: #00ff00;
+            --danger: #ff4444;
+            --bg: #03030b;
+            --sidebar-bg: #08081a;
+            --surface: #0d0d2f;
+            --text: #e0e0e0;
+            --text-muted: #8888aa;
+            --border: #1a1a40;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Navigation Sidebar --- */
+        nav {
+            width: 300px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            padding: 2.5rem 1.5rem;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+        .logo span { color: var(--brand); }
+
+        .nav-section { margin-bottom: 2.5rem; }
+        .nav-section h4 {
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .nav-link {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            border-left: 2px solid transparent;
+            padding-left: 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--brand);
+            border-left: 2px solid var(--brand);
+            background: rgba(85, 153, 255, 0.05);
+        }
+
+        /* --- Main Content --- */
+        main {
+            margin-left: 300px;
+            padding: 4rem 8%;
+            width: 100%;
+            max-width: 1300px;
+        }
+
+        .hero { margin-bottom: 6rem; }
+        .hero h1 { font-size: 3.5rem; letter-spacing: -2px; margin-bottom: 0.5rem; }
+        .hero .subtitle { font-size: 1.2rem; color: var(--brand); font-weight: 600; margin-bottom: 1rem; }
+
+        section { margin-bottom: 8rem; }
+        h2 { font-size: 2rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; color: var(--brand); }
+        h3 { font-size: 1.4rem; margin: 2.5rem 0 1rem; color: #fff; }
+
+        p { margin-bottom: 1.5rem; line-height: 1.8; color: var(--text-muted); }
+
+        .card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .code-block {
+            background: #000;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: block;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--brand);
+            font-family: 'JetBrains Mono', monospace;
+            color: #fff;
+            font-size: 0.9rem;
+            white-space: pre;
+        }
+
+        .alert {
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+        .alert-warn { background: rgba(255, 170, 0, 0.1); border-color: var(--accent); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        th, td { text-align: left; padding: 1rem; border-bottom: 1px solid var(--border); }
+        th { color: var(--brand); font-size: 0.8rem; text-transform: uppercase; }
+
+        @media (max-width: 1000px) { nav { display: none; } main { margin-left: 0; padding: 2rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PlamiumAI <span>Wiki</span></div>
+        
+        <div class="nav-section">
+            <h4>User Guide</h4>
+            <a href="#tutorial" class="nav-link">Social Onboarding</a>
+            <a href="#formatting" class="nav-link">Formatting Tags</a>
+            <a href="#ids" class="nav-link">Message IDs & Replies</a>
+            <a href="#names" class="nav-link">Display Names</a>
+        </div>
+
+        <div class="nav-section">
+            <h4>Server Owner Guide</h4>
+            <a href="#setup" class="nav-link">Installation</a>
+            <a href="#config" class="nav-link">minetest.conf Setup</a>
+            <a href="#moderation" class="nav-link">Blacklist Management</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <div class="subtitle">PRODUCT DOCUMENTATION</div>
+            <h1>Chat+</h1>
+            <p>A professional-grade communication suite for Luanti servers. Designed to prevent errors and enhance social interaction.</p>
+        </div>
+
+        <section id="tutorial">
+            <h2>Social Onboarding</h2>
+            <p>To maintain chat quality, Chat+ requires new players to pass a verification test before they can message the global channel. You must replicate the formatted text shown in the pop-up menu exactly.</p>
+            <div class="alert alert-warn">
+                <strong>Note:</strong> Failure to replicate the formatting (including line breaks and bold tags) will result in continued chat restriction.
+            </div>
+        </section>
+
+        <section id="formatting">
+            <h2>Formatting Tags</h2>
+            <p>Chat+ parses custom tags to provide rich text capabilities in the chat console.</p>
+            <table>
+                <thead>
+                    <tr><th>Tag</th><th>Effect</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>[br]</code></td><td>Inserts a line break</td><td>Hello[br]World</td></tr>
+                    <tr><td><code>**text**</code></td><td>Turns text <strong>Red</strong></td><td>**Warning!**</td></tr>
+                    <tr><td><code>:heart:</code></td><td>Emoji conversion</td><td>❤</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="ids">
+            <h2>Message IDs & Replies</h2>
+            <p>Every message is tagged with a unique 4-digit ID (e.g. #1234). Use these IDs to reply to specific messages and keep conversations organized.</p>
+            <div class="code-block">/r 1234 Your reply here</div>
+        </section>
+
+        <section id="setup">
+            <h2>Installation</h2>
+            <p>1. Download the Chat+ mod folder.<br>
+            2. Place it in your server's <code>/mods/</code> directory.<br>
+            3. Enable the mod by adding <code>load_mod_chat_plus = true</code> to your <code>world.mt</code>.</p>
+        </section>
+
+        <section id="config">
+            <h2>minetest.conf Setup</h2>
+            <p>Chat+ looks for specific settings in your <code>minetest.conf</code> to moderate the chat. Add these lines, and then add badwords, to moderate your server:</p>
+            <div class="code-block">
+# Add custom bad words (comma separated)
+chat_plus.badwords = badword1, badword2, badword3</div>
+        </section>
+
+        <section id="moderation">
+            <h2>Blacklist Management</h2>
+            <p>The mod includes a built-in protection system for sensitive roles. By default, the following words are restricted from use in Display Names and Prefixes to prevent staff impersonation:</p>
+            <code>admin, administrator, mod, moderator, helper, owner, staff, system, server</code>
+            
+            <h3>In-Game Admin Dashboard</h3>
+            <p>Players with the <code>server</code> privilege can access the management suite to toggle filters in real-time without restarting the server.</p>
+            <div class="code-block">/dashboard</div>
+        </section>
+
+        <footer style="padding: 4rem 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted);">
+            &copy; 2026 PlamiumAI. Hosted on GitHub Pages.
+        </footer>
+    </main>
+
+</body>
+</html>
